@@ -21,7 +21,7 @@ export default function Calculator(): JSX.Element {
     }
     if (isName) {
       setFormData((prev) => {
-        return { ...prev, [name]: value === null ? "" : value.trim() };
+        return { ...prev, [name]: value === null ? "" : value };
       });
     }
   };
@@ -34,7 +34,7 @@ export default function Calculator(): JSX.Element {
     const formAgeInYears: number | null = formAgeInYearsStr === null || formAgeInYearsStr.trim() == "" ? null : Number(formAgeInYearsStr);
     const formAgeInDays: number | null = formAgeInYears === null ? null : formAgeInYears * 365;
     const formattedAgeInDays = formAgeInDays !== null ? new Intl.NumberFormat().format(formAgeInDays) : null;
-    if (formName === "" || formAgeInYears === null) {
+    if (formName.trim() === "" || formAgeInYears === null) {
       if (formName === "") {
         setNameError(true);
       } else {
