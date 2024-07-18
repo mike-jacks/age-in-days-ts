@@ -21,7 +21,7 @@ export default function Calculator(): JSX.Element {
     }
     if (isName) {
       setFormData((prev) => {
-        return { ...prev, [name]: value === null ? "" : value };
+        return { ...prev, [name]: value === null ? "" : value.trim() };
       });
     }
   };
