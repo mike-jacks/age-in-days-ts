@@ -35,9 +35,15 @@ export default function Calculator(): JSX.Element {
     const formAgeInDays: number | null = formAgeInYears === null ? null : formAgeInYears * 365;
     const formattedAgeInDays = formAgeInDays !== null ? new Intl.NumberFormat().format(formAgeInDays) : null;
     if (formName.trim() === "" || formAgeInYears === null) {
-      if (formName === "") {
+      if (formName.trim() === "") {
+        setFormData((prev) => {
+          return { ...prev, name: "" };
+        });
         setNameError(true);
       } else {
+        setFormData((prev) => {
+          return { ...prev, name: formName.trim() };
+        });
         setNameError(false);
       }
       if (formAgeInYears === null) {
