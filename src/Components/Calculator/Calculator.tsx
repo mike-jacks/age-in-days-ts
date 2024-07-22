@@ -67,7 +67,7 @@ export default function Calculator(): JSX.Element {
     } else {
       setNameError(false);
       setAgeError(false);
-      setResult(`${formName} is ${formattedAgeInDays} days old!`);
+      setResult(`${formName} is approximately ${formattedAgeInDays} days old!`);
     }
   };
 
