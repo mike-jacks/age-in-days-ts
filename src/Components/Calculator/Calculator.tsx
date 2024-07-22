@@ -13,6 +13,11 @@ export default function Calculator(): JSX.Element {
   const [nameError, setNameError] = useState<boolean>(false);
   const [ageError, setAgeError] = useState<boolean>(false);
 
+  /**
+   * Field change function. Only allows for letters and spaces for names.
+   *
+   * @param e Field Change Event
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     let isName: boolean = true;
@@ -26,6 +31,11 @@ export default function Calculator(): JSX.Element {
     }
   };
 
+  /**
+   * Form submit handle function. Has conditionals to check for empty fields and render additional html elements if so.
+   *
+   * @param e Form element event
+   */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData: FormData = new FormData(e.currentTarget);
@@ -34,6 +44,8 @@ export default function Calculator(): JSX.Element {
     const formAgeInYears: number | null = formAgeInYearsStr === null || formAgeInYearsStr.trim() == "" ? null : Number(formAgeInYearsStr);
     const formAgeInDays: number | null = formAgeInYears === null ? null : formAgeInYears * 365;
     const formattedAgeInDays = formAgeInDays !== null ? new Intl.NumberFormat().format(formAgeInDays) : null;
+
+    // If field names are empty, set nameError/ageError useState variable to true. If either are empty, setResult to be an empty string.
     if (formName.trim() === "" || formAgeInYears === null) {
       if (formName.trim() === "") {
         setFormData((prev) => {
