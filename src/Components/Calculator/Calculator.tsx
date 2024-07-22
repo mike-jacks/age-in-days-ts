@@ -7,6 +7,11 @@ type FormDataProps = {
   ageInYears: number | null;
 };
 
+/**
+ * Generates a calculate component form with name and age fields to calculate and display approximate age in days.
+ *
+ * @returns Calculator component
+ */
 export default function Calculator(): JSX.Element {
   const [formData, setFormData] = useState<FormDataProps>({ name: "", ageInYears: null });
   const [result, setResult] = useState<string>("");
